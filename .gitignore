@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.db
+*.sqlite3
+# Node
+node_modules/
+dist/
+# Local secrets
+.env
+**/.env
+!.env.example
+# Editors
+.vscode/
+.idea/
+.DS_Store
+# Caches
+*.log
+coverage/
+
+# Local DB backups / dumps (never commit to Git)
+*.dump
+*_backup*.sql
+*.bak
