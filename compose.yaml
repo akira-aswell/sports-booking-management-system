@@ -1,0 +1,48 @@
+name: datsan-fullstack
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: datsan
+      POSTGRES_USER: datsan
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-localdevpassword}
+    ports:
+      - "127.0.0.1:${DB_HOST_PORT:-5433}:5432"
+    volumes:
+      - datsan_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U datsan -d datsan"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+  backend:
+    image: datsan-fullstack-backend:latest
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      APP_ENV: development
+      DATABASE_URL: postgresql+psycopg://datsan:${POSTGRES_PASSWORD:-localdevpassword}@db:5432/datsan
+      JWT_SECRET: ${JWT_SECRET:-CHANGE-ME-IN-PRODUCTION-DEV-ONLY}
+      ACCESS_TOKEN_MINUTES: 240
+      SEED_DEMO_DATA: "true"
+      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+  frontend:
+    image: datsan-fullstack-frontend:latest
+    build: ./frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  datsan_pgdata:
+    name: ${DATASAN_DB_VOLUME:-datsan-fullstack-pgdata}
+    external: ${DATASAN_DB_EXTERNAL:-false}
