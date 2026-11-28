@@ -1,3 +1,5 @@
+> **Integration status:** This repository is being integrated from the existing DatSan prototype. The Sprint 2 candidate exposes accounts, sports, courts, reservations, simulated payments and notifications. Team/tournament and full Admin features are planned for Sprint 3; the combined migration already includes their tables. The full-project descriptions below are target scope, not acceptance evidence. See [SDD](specs/README.md) and [Sprint 2 integration](docs/sdd/SPRINT_2_INTEGRATION.md). Verify Docker, PostgreSQL and browser tests locally before claiming completion.
+
 # DatSân — Sports Booking & Amateur Tournament Management System
 
 **DatSân** is a full-stack web application developed as a Software Engineering course project. It brings together sports facility discovery and reservation, facility-owner operations, and amateur tournament management in a single role-based platform.
