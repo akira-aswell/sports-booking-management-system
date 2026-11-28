@@ -17,7 +17,7 @@ py scripts/verify_pg_concurrency.py --base http://127.0.0.1:8000/api --court 1 -
 ```
 Replace date, court and API port with actual free values. Demo credentials in the script must match seed; do not share real credentials. The script creates a real booking in the demo database on success.
 
-Expected output: 1 HTTP 201, 49 HTTP 409, one new booking ID. Save the actual console output. Query the matching booking and allocation rows to confirm exactly one active allocation for that interval. Test separate non-overlapping slots and different courts too. Cancel the disposable booking through the authorized endpoint after recording evidence, or use another free slot next time. The script prints a check but does not itself assert via nonzero exit; read the counts.
+Expected output: 1 HTTP 201, 49 HTTP 409, one new booking ID. Save the actual console output. Query the matching booking and allocation rows to confirm exactly one active allocation for that interval. Test separate non-overlapping slots and different courts too. Cancel the disposable booking through the authorized endpoint after recording evidence, or use another free slot next time. The Sprint 2 integration patch verifier returns exit code 0 only for one 201 and all remaining 409 responses, and 1 otherwise. Record the counts and confirm PostgreSQL and SQL evidence independently.
 
 ## 3. Report
 Record run date, commit SHA, PostgreSQL version, migration, court/date/interval, counts by HTTP status, returned booking IDs, SQL evidence and reviewer. Link UC-007-AC-03 / TC-007-03. No test was run as part of this documentation package.
