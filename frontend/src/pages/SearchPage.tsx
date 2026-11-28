@@ -38,7 +38,7 @@ export function SearchPage() {
     <section className="hero"><div className="container hero-layout">
       <div className="hero-copy"><span className="eyebrow"><span className="eyebrow-dot" /> Nền tảng thể thao phong trào</span>
         <h1>Tìm sân lý tưởng.<br/><em>Chơi hết mình.</em></h1>
-        <p>Khám phá sân thể thao theo môn, khu vực và giá thuê. Chọn lịch trống, đặt sân, quản lý đội và tổ chức giải đấu trên cùng một nền tảng.</p>
+        <p>Khám phá sân thể thao theo môn, khu vực và giá thuê. Chọn lịch trống, đặt sân và theo dõi đơn đặt.</p>
         <div className="hero-points"><span><BadgeCheck size={16} /> Thông tin minh bạch</span><span><CalendarDays size={16} /> Đặt sân theo khung giờ</span></div>
       </div>
       <div className="hero-art" aria-label="Minh họa sân thể thao"><div className="court-art"><div className="court-line horizontal"/><div className="court-line vertical"/><div className="court-circle"/><span className="court-ball">⚽</span><span className="court-ribbon">COURT FINDER</span></div><div className="art-tag"><ShieldCheck size={20}/><div><strong>SPORTS, MADE SIMPLE</strong><small>Hệ thống quản lý sân thể thao</small></div></div></div>
@@ -64,7 +64,7 @@ export function SearchPage() {
         {courts.total > 6 && <div className="pagination"><button disabled={page === 0} onClick={() => setPage(n => n-1)} className="btn btn-outline btn-small"><ChevronLeft size={15}/> Trước</button><span>Trang {page+1} / {Math.ceil(courts.total/6)}</span><button disabled={(page+1)*6 >= courts.total} onClick={() => setPage(n => n+1)} className="btn btn-outline btn-small">Sau <ChevronRight size={15}/></button></div>}
       </> : !error && <EmptyState icon={<Wallet size={34}/>} title="Không tìm thấy sân phù hợp">Thử thay đổi môn thể thao, khu vực hoặc mức giá.</EmptyState>}
     </section>
-    <section className="info-strip container"><div><ShieldCheck size={22}/><strong>Quyền truy cập rõ ràng</strong><span>4 vai trò phân tách ở Backend</span></div><div><CalendarDays size={22}/><strong>Lịch sân không trùng nhau</strong><span>Kiểm tra booking và lịch thi đấu</span></div><div><MapPin size={22}/><strong>Tìm sân theo nhu cầu</strong><span>Lọc theo môn, khu vực và giá</span></div></section>
-    <div className="container sprint-note"><strong>Lưu ý phiên bản:</strong> Bản đầy đủ cho phép đặt sân, duyệt đơn và tổ chức giải. Mọi thanh toán trong hệ thống là mô phỏng phục vụ demo, không sử dụng tiền thật.</div>
+    <section className="info-strip container"><div><ShieldCheck size={22}/><strong>Quyền truy cập rõ ràng</strong><span>4 vai trò phân tách ở Backend</span></div><div><CalendarDays size={22}/><strong>Lịch sân không trùng nhau</strong><span>Kiểm tra lịch đặt sân</span></div><div><MapPin size={22}/><strong>Tìm sân theo nhu cầu</strong><span>Lọc theo môn, khu vực và giá</span></div></section>
+    <div className="container sprint-note"><strong>Lưu ý phiên bản:</strong> Sprint 2 hỗ trợ đặt sân và duyệt đơn; giải đấu thuộc Sprint 3. Mọi thanh toán trong hệ thống là mô phỏng phục vụ demo, không sử dụng tiền thật.</div>
   </>
 }
